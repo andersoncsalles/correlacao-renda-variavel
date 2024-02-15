@@ -15,8 +15,8 @@ Lista com os ativos e escolha da janela de avaliação
 
 ```
 #tinkers dos ativos
-tinkers  = ['WEGE3.SA', 'MGLU3.SA', 'KNCR11.SA','HGLG11.SA',
-'BOVA11.SA','SMAL11final = "2024–01–02"
+tinkers  = ['WEGE3.SA', 'MGLU3.SA', 'KNCR11.SA',
+'HGLG11.SA','BOVA11.SA','SMAL11.SA','JNJB34.SA','AAPL34.SA']
 
 #Janela de avaliação
 inicio = "2018-01-02"
@@ -32,3 +32,24 @@ dados = yf.download(tinkers, start= inicio, end=final )['Adj Close']
 carteira=pd.DataFrame(dados)
 carteira.head()
 ```
+<div align="center">
+<img src="https://raw.githubusercontent.com/andersoncsalles/correlacao-renda-variavel/main/imagem/tabela.png" width="700" height="250">
+</div>
+
+Cálculo da matriz de correlação
+```
+#Cálculo da correlação
+correlacao = carteira.corr()
+```
+Visualização da Matriz de Correlação
+```
+#Visualizando a Matriz de correlação
+plt.figure(figsize = (16, 8))
+sns.heatmap(correlacao, vmin = -1, vmax=1, annot = True)
+sns.set(font_scale=1.5)
+plt.title('Estudo básico de Correlação entre Ativos',fontsize = 18)
+```
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/andersoncsalles/correlacao-renda-variavel/main/imagem/download.png" width="700" height="500">
+</div>
